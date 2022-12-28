@@ -15,7 +15,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/public/uploads', express.static(path.join(public, "uploads")));
 
-app.use('/ok', async (res, req) => {
+app.get('/ok', async (res, req) => {
     res.send("Connected to Server");
 });
 
