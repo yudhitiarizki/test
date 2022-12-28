@@ -1,11 +1,23 @@
-const express = require('express');
+const signupRouter = require("./register");
+const loginRouter = require("./login");
+const foodsRouter = require("./foodPosts");
+const userRouter = require("./user");
+const adminRouter = require("./admin");
+const listRouter = require("./foodList");
+const detailRouter = require("./detail");
+const commentRouter = require("./comments");
+const usersettingRouter = require("./usersetting");
+const testRouter = require("./test");
 
-const router = express.Router();
-
-router.get('y', async (req, res) => {
-    return res.json({
-        mes: 'ok'
-    })
-})
-
-module.exports = router;
+module.exports = [
+    signupRouter,
+    loginRouter,
+    foodsRouter,
+    userRouter,
+    adminRouter,
+    listRouter,
+    detailRouter,
+    commentRouter,
+    testRouter,
+    usersettingRouter
+];
