@@ -1,13 +1,8 @@
 const express = require('express');
 
 const router = express.Router();
+const { getUsers } = require('../controllers/Users')
 
-const coba = async (req, res) => {
-    return res.json({
-        mes: 'ok'
-    })
-};
-
-router.get('/ok', coba);
+router.get('/ok', getUsers);
 
 module.exports = router;
