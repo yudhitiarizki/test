@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
-// const router = require("./api/index.js.js");
+const router = require("./api/index.js.js");
 
 require('dotenv').config();
 
@@ -15,10 +15,11 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/public/uploads', express.static(path.join(public, "uploads")));
 
-app.get('/ok', async (res, req) => {
+app.get("/", (req, res) => {
     res.send("Connected to Server");
-});
+  });
+  
+app.use('/', router)
 
-app.get("/", (req, res) => { res.send("Connected to Server"); });
 
 app.listen(PORT, () => console.log(`Server Running on PORT ${PORT}`))
