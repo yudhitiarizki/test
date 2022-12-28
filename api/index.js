@@ -1,23 +1,13 @@
-const signupRouter = require("./register");
-const loginRouter = require("./login");
-const foodsRouter = require("./foodPosts");
-const userRouter = require("./user");
-const adminRouter = require("./admin");
-const listRouter = require("./foodList");
-const detailRouter = require("./detail");
-const commentRouter = require("./comments");
-const usersettingRouter = require("./usersetting");
-const testRouter = require("./test");
+const express = require("express");
 
-module.exports = [
-    signupRouter,
-    loginRouter,
-    foodsRouter,
-    userRouter,
-    adminRouter,
-    listRouter,
-    detailRouter,
-    commentRouter,
-    testRouter,
-    usersettingRouter
-];
+const router = express.Router();
+
+const user = require('./user');
+const order = require('./order');
+const service = require('./service');
+const category = require('./category')
+
+//Routes
+router.use(user, order, service, category);
+
+module.exports = router;
