@@ -12,17 +12,17 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Orders.belongsTo(models.Users, {
         foreignKey: 'userId'
-      })
-    }
-
-    static associate(models) {
-      Orders.hasMany(models.Packages, {
+      }),
+      Orders.belongsTo(models.Packages, {
+        foreignKey: 'packageId'
+      }),
+      Orders.hasOne(models.Reviews, {
+        foreignKey: 'orderId'
+      }),
+      Orders.hasMany(models.OrderNotes, {
         foreignKey: 'orderId'
       })
-    }
-
-    static associate(models) {
-      Orders.hasOne(models.Reviews, {
+      Orders.hasMany(models.OrderFiles, {
         foreignKey: 'orderId'
       })
     }
@@ -43,6 +43,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     paymentProof: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    note: {
       type: DataTypes.STRING,
       allowNull: false
     },
